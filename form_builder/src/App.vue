@@ -37,7 +37,6 @@ const getQuestions = (questions) => {
 
       <div v-if="Object.keys(dataBase).length" class="downDiv">
         <span>PREVIEW</span> <br />
-        <div></div>
         <label for="input"
           ><h2>{{ dataBase[indexQuestion]?.query }}</h2></label
         >
@@ -46,7 +45,7 @@ const getQuestions = (questions) => {
           v-if="dataBase[indexQuestion].text == 'Lange tekst'"
           :style="{ height: `${sliderValue}vh` }"
         />
-        <input v-else type="text" />
+        <input v-else type="text" :style="{width: '90%'}"/>
       </div>
     </div>
   </main>
@@ -91,7 +90,7 @@ main {
   border-bottom: 1px solid rgba(24, 24, 24, 0.141);
 }
 .downDiv {
-  height: 65%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   padding: 1.3rem;
@@ -106,7 +105,7 @@ input[type='text'] {
 input[type='range'] {
   width: 40%;
   cursor: pointer;
-  background-color:rgba(142, 134, 134, 0.141) ;
+  background-color: rgba(142, 134, 134, 0.141);
 }
 
 textarea {

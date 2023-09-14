@@ -1,19 +1,25 @@
 <script setup>
-import { ref, watchEffect, onMounted } from 'vue'
+import { ref, watchEffect } from 'vue'
 import questionCard from './questionCard.vue'
+//This is selection of dropdown option
 const selected = ref(null)
+//Visibility of dropdown
 const showDropDown = ref(false)
+//Created questions
 const questions = ref([])
 
+//Sending data of 'questions' to parent component
 const emit = defineEmits(['question'])
-
 watchEffect(() => {
   emit('question', questions.value)
 })
+
+//Removing questions card
 const removeQuestion = (index) => {
   questions.value.splice(index, 1)
 }
 
+//Saving questions.
 const addQuestion = () => {
   if (selected.value == 'Lang') {
     questions.value.push({ query: 'Wat zijn je woonwensen?', text: 'Lange tekst' })
@@ -22,9 +28,7 @@ const addQuestion = () => {
   }
   showDropDown.value = false
 }
-// onMounted(()=>{
-//     console.log(questions.value);
-// })
+
 </script>
 <template>
   <div class="dropdown">
@@ -37,7 +41,6 @@ const addQuestion = () => {
         />
       </li>
     </ul>
-
     <button @click="showDropDown = !showDropDown">Vraag toevoegen &#x25be;</button>
     <select v-if="showDropDown" v-model="selected" multiple>
       <option @click="addQuestion" value="Lang">Lange tekst</option>
@@ -73,6 +76,7 @@ select {
   height: 10vh;
   padding: 5px;
   margin-left: 1rem;
+  border-radius: 8px;
 }
 option {
   padding: 4px;
