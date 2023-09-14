@@ -9,7 +9,7 @@ const showDropDown = ref(false)
 const questions = ref([])
 
 //Sending data of 'questions' to parent component
-const emit = defineEmits(['question'])
+const emit = defineEmits(['question','index'])
 watchEffect(() => {
   emit('question', questions.value)
 })
@@ -33,7 +33,7 @@ const addQuestion = () => {
 <template>
   <div class="dropdown">
     <ul v-for="(question, index) in questions" :key="index">
-      <li @click="$emit('getIndex', index)">
+      <li @click="emit('index', index)">
         <questionCard
           @deleteQuestion="removeQuestion(index)"
           :query="question.query"

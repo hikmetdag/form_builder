@@ -18,7 +18,7 @@ const getQuestions = (questions) => {
 <template>
   <main>
     <div class="left">
-      <DropDown @question="getQuestions" @getIndex="getIndex" />
+      <DropDown @question="getQuestions" @index="getIndex" />
     </div>
 
     <div class="right">
