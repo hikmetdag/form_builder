@@ -1,5 +1,5 @@
 <script setup>
-import { ref,watchEffect,onMounted} from 'vue'
+import { ref, watchEffect, onMounted } from 'vue'
 import questionCard from './questionCard.vue'
 const selected = ref(null)
 const showDropDown = ref(false)
@@ -8,7 +8,7 @@ const questions = ref([])
 const emit = defineEmits(['question'])
 
 watchEffect(() => {
-  emit('question', questions.value) 
+  emit('question', questions.value)
 })
 const removeQuestion = (index) => {
   questions.value.splice(index, 1)
@@ -25,17 +25,15 @@ const addQuestion = () => {
 // onMounted(()=>{
 //     console.log(questions.value);
 // })
-
 </script>
 <template>
   <div class="dropdown">
     <ul v-for="(question, index) in questions" :key="index">
-      <li @click="$emit('getIndex',index)">
+      <li @click="$emit('getIndex', index)">
         <questionCard
           @deleteQuestion="removeQuestion(index)"
           :query="question.query"
           :questionType="question.text"
-          
         />
       </li>
     </ul>
@@ -78,5 +76,10 @@ select {
 }
 option {
   padding: 4px;
+  background-color: white;
+}
+option:hover {
+  background-color: rgba(24, 24, 24, 0.141);
+  cursor: pointer;
 }
 </style>

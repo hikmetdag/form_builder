@@ -17,6 +17,7 @@ defineProps({
     <h2>{{ query }}</h2>
     <h4>{{ questionType }}</h4>
     <button @click="$emit('deleteQuestion')">X</button>
+    <span>Vraag verwijderen</span>
   </div>
 </template>
 <style scoped>
@@ -31,7 +32,7 @@ defineProps({
   border: 1px solid blue;
   border-radius: 10px;
   font-size: 1rem;
-  padding-left:1rem;
+  padding-left: 1rem;
 }
 
 button {
@@ -40,11 +41,25 @@ button {
   right: 10px;
   color: red;
   border: none;
-  background-color:rgba(142, 134, 134, 0.141);
+  background-color: rgba(142, 134, 134, 0.141);
   font-size: 1.3rem;
 }
-button:hover{
-    background-color: rgba(24, 24, 24, 0.141);
-    cursor: pointer;
+button:hover {
+  background-color: rgba(24, 24, 24, 0.141);
+  cursor: pointer;
+}
+button:hover + span {
+  visibility: visible;
+  color:white;
+  background-color: black;
+  padding: 5px;
+  border-radius: 7px;
+}
+
+span {
+  visibility: hidden;
+  position: absolute;
+  top: -1.4rem;
+  right: -2rem;
 }
 </style>
