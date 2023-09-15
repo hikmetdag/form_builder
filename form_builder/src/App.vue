@@ -26,10 +26,14 @@ const getQuestions = (questions) => {
         <h1>Instellingen</h1>
         <div>
           <label for="input">Vraag</label><br />
-          <input type="text" v-model="dataBase[indexQuestion].query" />
+          <input
+            type="text"
+            :value="dataBase[indexQuestion]?.query"
+            @input="(dataBase[indexQuestion]?.query) == $event.target.value"
+          />
         </div>
 
-        <div v-if="dataBase[indexQuestion].text == 'Lange tekst'">
+        <div v-if="dataBase[indexQuestion]?.text == 'Lange tekst'">
           <label for="input">Grootte tekstveld</label><br />
           <input type="range" min="1" max="50" v-model="sliderValue" />
         </div>
@@ -42,10 +46,10 @@ const getQuestions = (questions) => {
         >
         <br />
         <textarea
-          v-if="dataBase[indexQuestion].text == 'Lange tekst'"
+          v-if="dataBase[indexQuestion]?.text == 'Lange tekst'"
           :style="{ height: `${sliderValue}vh` }"
         />
-        <input v-else type="text" :style="{width: '90%'}"/>
+        <input v-else type="text" :style="{ width: '90%' }" />
       </div>
     </div>
   </main>
